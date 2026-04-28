@@ -1,24 +1,23 @@
 package com.whut.map.map_service.shared.dto.sse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whut.map.map_service.risk.environment.EnvironmentUpdateReason;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RiskUpdatePayload {
+public class EnvironmentUpdatePayload {
 
     @JsonProperty("event_id")
     private String eventId;
-
-    @JsonProperty("risk_object_id")
-    private String riskObjectId;
 
     @JsonProperty("timestamp")
     private String timestamp;
@@ -26,12 +25,12 @@ public class RiskUpdatePayload {
     @JsonProperty("environment_state_version")
     private long environmentStateVersion;
 
-    @JsonProperty("governance")
-    private Map<String, Object> governance;
+    @JsonProperty("reason")
+    private EnvironmentUpdateReason reason;
 
-    @JsonProperty("own_ship")
-    private Map<String, Object> ownShip;
+    @JsonProperty("changed_fields")
+    private List<String> changedFields;
 
-    @JsonProperty("targets")
-    private Object targets;
+    @JsonProperty("environment_context")
+    private Map<String, Object> environmentContext;
 }
